@@ -211,7 +211,7 @@ fi
 have_iconv=no
 case "${host_os}" in
   darwin*)
-        AC_SEARCH_LIBS([iconv_open], [iconv], [have_iconv=yes])
+        AC_SEARCH_LIBS([libiconv_open], [iconv], [have_iconv=yes])
 
         if test "x${have_iconv}" = xno; then
             AC_MSG_FAILURE([iconv library required])

@@ -877,7 +877,7 @@ bool git_path_has_non_ascii(const char *path, size_t pathlen)
 int git_path_iconv_init_precompose(git_path_iconv_t *ic)
 {
 	git_buf_init(&ic->buf, 0);
-	ic->map = iconv_open(GIT_PATH_REPO_ENCODING, GIT_PATH_NATIVE_ENCODING);
+	ic->map = libiconv_open(GIT_PATH_REPO_ENCODING, GIT_PATH_NATIVE_ENCODING);
 	return 0;
 }
 
@@ -885,7 +885,7 @@ void git_path_iconv_clear(git_path_iconv_t *ic)
 {
 	if (ic) {
 		if (ic->map != (iconv_t)-1)
-			iconv_close(ic->map);
+			libiconv_close(ic->map);
 		git_buf_free(&ic->buf);
 	}
 }
